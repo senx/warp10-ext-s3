@@ -16,65 +16,54 @@ warpscript.extensions = io.warp10.amazons3.script.AmazonExtension
 ### STORE
 
 ```
-'READ'
-'TOKEN'
-STORE
+NEWGTS 'test2-WRAP' RENAME
+NOW NaN NaN NaN 2 ADDVALUE
 
-$TOKEN AUTHENTICATE
-200000000 LIMIT
+
+'gts' STORE
 
 //
-// Read all GTS from each station and store them in blobs
-// containing the wrapped content
+// Wrap GTS
 //
 
-[ '2' ] 'ids' STORE
+$gts WRAPRAW
 
-$ids
-<%
-  DROP
-  'id' STORE
-  [ $TOKEN '~.*' { 'station' 'KOL' 'id' $id } NOW -5000000 ] FETCH
-  <%
-    DROP
-    // GTS on top of the stack
-    'gts' STORE
-    $gts WRAPRAW $gts TOSELECTOR '-WRAP' + 
-    { 
-      'accessKey' 'accessKey1'
-      'secretKey' 'verySecretKey1'
-      'endPoint' 'http://localhost:8000'
-    }
-    S3STORE
-    0
-    //SIZE $gts TOSELECTOR $gts SIZE ROT 3 ->LIST
-  %> LMAP
-%> LMAP
+//
+// S3 storage key
+//
+
+$gts TOSELECTOR
+
+//
+// S3 parameter map
+//
+
+{ 
+  'accessKey' 'accessKey1'
+  'secretKey' 'verySecretKey1'
+  'endPoint' 'http://localhost:8000'
+}
+S3STORE
 ```
 
 ### Load
 
 ```
 //
-// Read the raw blobs and convert them to FLOATS
+// S3 Selector key
 //
 
-'READ'
-'TOKEN'
-STORE
+'test2-WRAP{}'
 
 //
-// Find the GTS
+// S3 parameter map
 //
 
-[ $TOKEN '~.*' { 'station' 'KOL' 'id' '2' } ] FIND
-0 GET
-TOSELECTOR '-WRAP' + 
 { 
   'accessKey' 'accessKey1'
   'secretKey' 'verySecretKey1'
   'endPoint' 'http://localhost:8000'
-} S3LOAD
-UNWRAP 
-SIZE
+}
+S3LOAD
+UNWRAP
 ```
