@@ -1,10 +1,10 @@
 ## S3LOAD
 
-S3LOAD is used to load data stored as GTS in Amazon S3. It takes as input a gts selector and a parameter map.
+S3LOAD is used to load data stored as GTS in Amazon S3. It takes as input a key for S3 storage and a parameter map.
 
 ```
-// GTS selector
-'GTS-WRAP'
+// S3 storage key (example: series selector)
+'GTS-WRAP{}'
 
 // Params map
 { 
