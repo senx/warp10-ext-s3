@@ -20,7 +20,7 @@ warpscript.extensions = io.warp10.amazons3.script.AmazonExtension
 This function is used to store data in a S3 storage, here a small example of it's usage. It takes as input an element, a storage key and a S3 storage parameter map.
 
 ```
-NEWGTS 'test2-WRAP' RENAME
+NEWGTS 'test-WRAP' RENAME
 NOW NaN NaN NaN 2 ADDVALUE
 
 
@@ -59,7 +59,7 @@ This function is used to load data from a S3 storage, here a small example of it
 // S3 Selector key (series selector)
 //
 
-'test2-WRAP{}'
+'test-WRAP{}'
 
 //
 // S3 parameter map
