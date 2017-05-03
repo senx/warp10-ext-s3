@@ -19,6 +19,8 @@ import io.warp10.script.NamedWarpScriptFunction;
 import io.warp10.script.WarpScriptException;
 import io.warp10.script.WarpScriptStack;
 import io.warp10.script.WarpScriptStackFunction;
+
+import com.amazonaws.services.s3.model.Bucket;
 import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectInputStream;
 
@@ -69,7 +71,33 @@ public class S3STORE extends NamedWarpScriptFunction implements WarpScriptStackF
     if (!(top instanceof byte[]) && !(top instanceof String)) {
       throw new WarpScriptException(getName() + " can only store byte arrays.");
     }
+    
     if (top instanceof byte[]) {
+      
+      //
+      // Verify if Java bucket already exists
+      //
+      
+      boolean javaBucket =false;
+      for (Bucket bucket : s3client.listBuckets()) {
+        if(bucket.getName().equals("javabucket")) {
+          javaBucket=true;
+          break;
+        }
+      }
+      
+      //
+      // Otherwise create it
+      //
+      
+      if(!javaBucket) {
+        s3client.createBucket("javabucket");
+      }
+      
+      //
+      // Push object on S3 client
+      //
+      
       s3client.putObject("javabucket", new String(OrderPreservingBase64.encode(key.getBytes(Charsets.UTF_8))), new String((byte[]) top, Charsets.ISO_8859_1));
       //ByteStreams.copy(in, top);
       //s3client.putObject("javabucket", key, input, metadata)
