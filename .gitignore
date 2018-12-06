@@ -1,10 +1,9 @@
-.DS_Store
 .classpath
 .gradle/
 .project
 .settings/
-bin/
+.idea/
+*.iml
+*.ipr
+*.iws
 build/
-gradle/
-gradlew
-gradlew.bat
