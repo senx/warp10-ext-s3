@@ -1,4 +1,4 @@
-package io.warp10.amazons3.script;
+package io.warp10.script.ext.s3;
 
 import io.warp10.script.NamedWarpScriptFunction;
 import io.warp10.script.WarpScriptException;

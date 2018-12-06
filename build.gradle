@@ -59,8 +59,8 @@ dependencies {
     // The production code uses the SLF4J logging API at compile time
     compile 'org.slf4j:slf4j-api:1.7.21'
     compile group: 'com.amazonaws', name: 'aws-java-sdk', version: '1.11.66'
-	provided 'io.warp10:warpscript:1.2.4'
-	compile group: 'com.google.guava', name: 'guava', version: 'r05'
+    provided 'io.warp10:warpscript:1.2.6'
+    compile group: 'com.google.guava', name: 'guava', version: 'r05'
 
     // Declare the dependency for your favourite test framework you want to use in your tests.
     // TestNG is also supported by the Gradle Test task. Just change the
@@ -80,7 +80,7 @@ eclipse.classpath.plusConfigurations += [configurations.provided]  // Eclipse us
 shadowJar {
     classifier = ''
     manifest {
-       attributes("Implementation-Title": "Warp-10 Extension Amazon s3 functions")
+       attributes("Implementation-Title": "Warp 10 S3 Extension")
        attributes("Implementation-Version": "0.0.1")
    }
 }
