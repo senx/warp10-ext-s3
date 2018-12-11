@@ -48,8 +48,7 @@ dependencies {
   provided 'io.warp10:warpscript:+'
   // The production code uses the SLF4J logging API at compile time
   compile 'org.slf4j:slf4j-api:1.7.21'
-  compile group: 'com.amazonaws', name: 'aws-java-sdk', version: '1.11.66'
-  compile group: 'com.google.guava', name: 'guava', version: 'r05'
+  compile group: 'com.amazonaws', name: 'aws-java-sdk-s3', version: '1.11.466'
 
 
   testCompile'io.warp10:warpscript:+'
