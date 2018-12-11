@@ -1,0 +1,54 @@
+<%
+  {
+    'name' 'S3LOAD'
+    'since' '1.0.0'
+    'deprecated' ''
+    'deleted' ''
+    'version' 'all'
+    'tags' [ 'extensions' ]
+    'desc' 
+      <'
+The `S3LOAD` function fetches one or more objects from an [S3](https://en.wikipedia.org/wiki/Amazon_S3) compatible storage service.
+
+The function expects a map of parameters containing the following keys:
+
+| Key | Value |
+|-----|-------|
+| endPoint | URL of the S3 endpoint service. |
+| accessKey | Access Key to authenticate to the S3 service. |
+| secretKey | Secret Key to authenticate to the S3 service. |
+| bucket | Optional bucket to access, if not specified, `warp10` will be used |
+
+      '>
+    'sig' [
+      [ [ 'params:MAP' 'key:STRING' ]  [ 'object:BYTES' ] ]
+      [ [ 'params:MAP' 'lkeys:LIST<STRING>' ] [ 'lobjects:LIST<BYTES>' ] ]
+    ]
+    'params' {
+      'params' 'Parameter map with credentials and infos regarding the S3 service to access.'
+      'key' 'Key under which the object to retrieve is stored.'
+      'lkeys' 'List of keys to retrieve.'
+      'object' 'Retrieved object or null if the key is not associated with any object in the given bucket.'
+      'lobjects' 'List of retrieved objects, `null` will appear in the list for each key with no associated object.'
+    }
+    'related' [ 'S3STORE' 'S3BUCKETS' ]
+    'examples' [
+<'
+  'key'
+  {
+    'endPoint' 'http://127.0.0.1:8000/'
+    'accessKey' 'accessKey1'
+    'secretKey' 'verySecretKey1'
+  }
+  S3LOAD
+'>
+    ]
+    'conf' [ 'warpscript.extensions' ]
+    'ext' 'io.warp10.script.ext.s3.S3WarpScriptExtension'
+  } INFO
+<%  'S3LOAD' EVAL %>
+<% %> <% %> TRY
+%>
+'macro' STORE
+// Unit tests
+$macro

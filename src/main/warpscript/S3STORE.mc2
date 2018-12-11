@@ -1,0 +1,55 @@
+<%
+  {
+    'name' 'S3STORE'
+    'since' '1.0.0'
+    'deprecated' ''
+    'deleted' ''
+    'version' 'all'
+    'tags' [ 'extensions' ]
+    'desc' 
+      <'
+The `S3STORE` function stores one or more objects into an [S3](https://en.wikipedia.org/wiki/Amazon_S3) compatible storage service.
+
+The function expects a map of parameters containing the following keys:
+
+| Key | Value |
+|-----|-------|
+| endPoint | URL of the S3 endpoint service. |
+| accessKey | Access Key to authenticate to the S3 service. |
+| secretKey | Secret Key to authenticate to the S3 service. |
+| bucket | Optional bucket to access, if not specified, `warp10` will be used |
+
+      '>
+    'sig' [
+      [ [ 'params:MAP' 'key:STRING' 'object:BYTES' ]  [] ]
+      [ [ 'params:MAP' 'lkeys:LIST<STRING>' 'lobjects:LIST<BYTES>' ] [] ]
+    ]
+    'params' {
+      'params' 'Parameter map with credentials and infos regarding the S3 service to access.'
+      'key' 'Key under which the object should be stored.'
+      'lkeys' 'List of keys under which to store the objects in `lobjects`.'
+      'object' 'Object to store.'
+      'lobjects' 'List of objects to store.'
+    }
+    'related' [ 'S3LOAD' 'S3BUCKETS' ]
+    'examples' [
+<'
+  'String' 'UTF-8' ->BYTES
+  'key'
+  {
+    'endPoint' 'http://127.0.0.1:8000/'
+    'accessKey' 'accessKey1'
+    'secretKey' 'verySecretKey1'
+  }
+  S3STORE
+'>
+    ]
+    'conf' [ 'warpscript.extensions' ]
+    'ext' 'io.warp10.script.ext.s3.S3WarpScriptExtension'
+  } INFO
+<%  'S3STORE' EVAL %>
+<% %> <% %> TRY
+%>
+'macro' STORE
+// Unit tests
+$macro

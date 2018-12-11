@@ -1,0 +1,63 @@
+//
+//   Copyright 2018  SenX S.A.S.
+//
+//   Licensed under the Apache License, Version 2.0 (the "License");
+//   you may not use this file except in compliance with the License.
+//   You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+//   Unless required by applicable law or agreed to in writing, software
+//   distributed under the License is distributed on an "AS IS" BASIS,
+//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//   See the License for the specific language governing permissions and
+//   limitations under the License.
+//
+
+<%
+  {
+    'name' 'S3BUCKETS'
+    'since' '1.0.0'
+    'deprecated' ''
+    'deleted' ''
+    'version' 'all'
+    'tags' [ 'extensions' ]
+    'desc' 
+      <'
+The `S3BUCKETS` lists the available buckets in an [S3](https://en.wikipedia.org/wiki/Amazon_S3) compatible storage service.
+
+The function expects a map of parameters containing the following keys:
+
+| Key | Value |
+|-----|-------|
+| endPoint | URL of the S3 endpoint service. |
+| accessKey | Access Key to authenticate to the S3 service. |
+| secretKey | Secret Key to authenticate to the S3 service. |
+      '>
+    'sig' [
+      [ [ 'params:MAP' ]  [ 'buckets:LIST<STRING>' ] ]
+    ]
+    'params' {
+      'params' 'Parameter map with credentials and infos regarding the S3 service to access.'
+      'buckets' 'List of known buckets in the accessed service.'
+    }
+    'related' [ 'S3STORE' 'S3LOAD' ]
+    'examples' [
+<'
+  {
+    'endPoint' 'http://127.0.0.1:8000/'
+    'accessKey' 'accessKey1'
+    'secretKey' 'verySecretKey1'
+  }
+  S3BUCKETS
+'>
+    ]
+    'conf' [ 'warpscript.extensions' ]
+    'ext' 'io.warp10.script.ext.s3.S3WarpScriptExtension'
+  } INFO
+<%  'S3BUCKETS' EVAL %>
+<% %> <% %> TRY
+%>
+'macro' STORE
+// Unit tests
+$macro
