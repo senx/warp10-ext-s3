@@ -1,0 +1,13 @@
+{
+  "type": "ext",
+  "group": "io.warp10",
+  "artifact": "warp10-ext-s3",
+  "version": "0.1.0",
+  "description": "WarpScript™ Extension to interact with S3 compatible storage services",
+  "author": "SenX",
+  "email": "contact@senx.io",
+  "license": "Apache-2.0",
+  "git": "https://github.com/senx/warp10-ext-s3",
+  "tags": "warpscript, warp 10, s3",
+  "repoUrl": "https://dl.bintray.com/senx/maven/"
+}
