@@ -3,7 +3,7 @@
   "group": "io.warp10",
   "artifact": "warp10-ext-s3",
   "version": "0.2.0",
-  "description": "WarpScript™ S2 Extension",
+  "description": "WarpScript™ S3 Extension",
   "author": "SenX",
   "email": "contact@senx.io",
   "license": "Apache 2.0",
