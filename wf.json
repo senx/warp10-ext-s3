@@ -1,0 +1,15 @@
+{
+  "type": "ext",
+  "group": "io.warp10",
+  "artifact": "warp10-ext-s3",
+  "version": "0.2.0",
+  "description": "WarpScript™ S2 Extension",
+  "author": "SenX",
+  "email": "contact@senx.io",
+  "license": "Apache 2.0",
+  "git": "https://github.com/senx/warp10-ext-s3",
+  "tags": [
+    "WarpScript",
+    "S3"
+  ]
+}
