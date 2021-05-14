@@ -30,7 +30,6 @@ project.group = 'io.warp10'
 
 // If the current tag is set, then it's a new release. Don't add build number
 project.version = versioning.info.lastTag + ((versioning.info.tag != null) ? '' : '-' + versioning.info.build)
-project.version = '1.0.1'
 
 //
 // Repositories for the project dependencies
@@ -78,7 +77,7 @@ jar {
     // Only consider macros which are in our namespace
     //
     include project.group + '/' + project.name + '/*.mc2'
-    include project.group + '/' + project.name + '/**/*.mc2'    
+    include project.group + '/' + project.name + '/**/*.mc2'
   }
 }
 
@@ -88,9 +87,9 @@ shadowJar {
   from('src/main/warpscript') {
     //
     // Only consider macros which are in our namespace
-    //    
+    //
     include project.group + '/' + project.name + '/*.mc2'
-    include project.group + '/' + project.name + '/**/*.mc2'    
+    include project.group + '/' + project.name + '/**/*.mc2'
   }
 }
 
@@ -101,8 +100,8 @@ shadowJar {
 
 publishing {
   publications {
-    module(MavenPublication) {     
-      from components.java 
+    module(MavenPublication) {
+      from components.java
 
       pom {
         name = project.name
