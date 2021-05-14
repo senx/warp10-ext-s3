@@ -25,6 +25,7 @@ plugins {
 
 
 project.group = 'io.warp10'
+project.description = 'WarpScript™ S3 Extension'
 
 // If the current tag is set, then it's a new release. Don't add build number
 project.version = versioning.info.lastTag + ((versioning.info.tag != null) ? '' : '-' + versioning.info.build)
@@ -64,7 +65,7 @@ java {
 
 jar {
   manifest {
-   attributes('WarpFleet-Description': 'WarpScript™ S3 Extension')
+   attributes('WarpFleet-Description': project.description)
    attributes('WarpFleet-Group': project.group)
    attributes('WarpFleet-Artifact': project.name)
    attributes('WarpFleet-Version': project.version)
@@ -103,7 +104,7 @@ publishing {
 
       pom {
         name = project.name
-        description = 'A Warp 10 extension for s3'
+        description = project.description
         url = 'https://github.com/senx/' + project.name
 
         scm {
