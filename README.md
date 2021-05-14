@@ -4,20 +4,20 @@
 Build jar
 
 ```
-gradle shadowJar
+./gradlew shadowJar
 ```
 
-Add in Warp10 conf current extension
+Add the current extension in Warp 10 configuration file
 
 ```
 warpscript.extensions = io.warp10.script.ext.s3.S3WarpScriptExtension
 ```
 
-*2 mains functions are provided in this extention: S3STORE and S3LOAD*
+*2 mains functions are provided in this extension: S3STORE and S3LOAD*
 
-### STORE
+### Store
 
-This function is used to store data in S3, here a small example of its usage. It takes as input an element (a byte array), a storage key (a string) and a parameter map.
+This function is used to store data in S3, here is a small example of its usage. It takes as input an element (a byte array), a storage key (a string) and a parameter map.
 
 ```
 NEWGTS 'test-WRAP' RENAME
@@ -42,7 +42,7 @@ $gts TOSELECTOR
 // S3 parameter map
 //
 
-{ 
+{
   'accessKey' 'accessKey1'
   'secretKey' 'verySecretKey1'
   'endPoint' 'http://localhost:8000'
@@ -52,7 +52,7 @@ S3STORE
 
 ### Load
 
-This function is used to load data from a S3, here a small example of its usage. It takes as input a storage key (a string) and a parameter map.
+This function is used to load data from a S3, here is a small example of its usage. It takes as input a storage key (a string) and a parameter map.
 
 ```
 //
@@ -65,7 +65,7 @@ This function is used to load data from a S3, here a small example of its usage.
 // S3 parameter map
 //
 
-{ 
+{
   'accessKey' 'accessKey1'
   'secretKey' 'verySecretKey1'
   'endPoint' 'http://localhost:8000'
@@ -93,4 +93,3 @@ Mandatory, the S3 endpoint to access.
 * bucket
 
 Optional, the S3 bucket to use, if not specified, 'warp10' will be used. The specified bucket will be created as part of the call to S3STORE if it does not yet exist.
-
