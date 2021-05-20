@@ -27,7 +27,7 @@ plugins {
 }
 
 project.group = 'io.warp10'
-project.description = 'WarpScript™ PCap Extension'
+project.description = 'WarpScript™ S3 Extension'
 
 // If the current tag is set, then it's a new release. Don't add build number
 project.version = versioning.info.lastTag + ((versioning.info.tag != null) ? '' : '-' + versioning.info.build)
